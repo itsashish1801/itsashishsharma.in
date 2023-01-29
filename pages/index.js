@@ -1,8 +1,9 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from '@next/font/google';
+
 import Header from '@/components/Header';
 import Profile from '@/components/Profile';
+import Blogs from '@/components/Blogs';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +22,7 @@ export default function Home() {
       <main className='transition duration-500 bg-white dark:bg-gray-900'>
         <Header />
         <Profile />
+        <Blogs />
       </main>
     </>
   );

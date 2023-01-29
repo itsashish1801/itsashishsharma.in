@@ -12,6 +12,10 @@ module.exports = {
       current: 'currentColor',
       white: 'var(--color-white)',
       black: 'var(--color-black)',
+      primary: 'var(--color-primary)',
+      'primary-dark': 'var(--color-primary-dark)',
+      secondary: 'var(--color-secondary)',
+      'secondary-dark': 'var(--color-secondary-dark)',
 
       gray: {
         100: 'var(--color-gray-100)',
