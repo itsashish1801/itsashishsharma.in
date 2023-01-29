@@ -18,7 +18,7 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.svg' />
       </Head>
-      <main className='h-screen transition duration-500 bg-white dark:bg-gray-900'>
+      <main className='transition duration-500 bg-white dark:bg-gray-900'>
         <Header />
         <Profile />
       </main>
