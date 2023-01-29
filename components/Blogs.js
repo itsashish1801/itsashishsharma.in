@@ -8,7 +8,8 @@ function Blogs() {
         <h2 className='font-medium tracking-wider uppercase text-secondary dark:text-secondary-dark'>
           Recently Published
         </h2>
-        <div className='mt-6'>
+        <div className='flex flex-col gap-16 mt-10'>
+          <ArticleCard />
           <ArticleCard />
         </div>
       </Container>
