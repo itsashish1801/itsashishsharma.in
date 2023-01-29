@@ -10,10 +10,10 @@ function Header() {
   return (
     <header>
       <Container>
-        <nav className='flex items-center justify-between py-9'>
+        <nav className='flex items-center justify-between py-9 lg:py-12'>
           <Link href={'/'} className='h-10 w-[120px] relative'>
-            <Logo className='absolute inset-0 w-full h-auto transition duration-300 opacity-100 dark:opacity-0' />
-            <LogoDark className='absolute inset-0 w-full h-auto transition duration-300 opacity-0 dark:opacity-100' />
+            <Logo className='absolute inset-0 w-full h-auto transition duration-500 opacity-100 dark:opacity-0' />
+            <LogoDark className='absolute inset-0 w-full h-auto transition duration-500 opacity-0 dark:opacity-100' />
           </Link>
 
           <button
