@@ -21,6 +21,7 @@ module.exports = {
         100: 'var(--color-gray-100)',
         200: 'var(--color-gray-200)',
         300: 'var(--color-gray-300)',
+        350: 'var(--color-gray-350)',
         400: 'var(--color-gray-400)',
         500: 'var(--color-gray-500)',
         600: 'var(--color-gray-600)',
@@ -30,6 +31,7 @@ module.exports = {
       },
       slate: {
         500: 'var(--color-slate-500)',
+        600: 'var(--color-slate-600)',
       },
       team: {
         unknown: 'var(--color-team-unknown)',

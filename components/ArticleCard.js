@@ -5,8 +5,8 @@ function ArticleCard() {
     <article className='relative max-w-xl'>
       <a href='#'>
         <time className='flex items-center gap-3.5' dateTime='2023-01-30'>
-          <div className='h-4 w-0.5 rounded-full bg-gray-400 dark:bg-slate-500' />
-          <span className='text-sm text-gray-400 dark:text-slate-500'>
+          <div className='h-4 w-0.5 rounded-full bg-gray-350 opacity-60 dark:bg-slate-600' />
+          <span className='text-sm text-gray-350 dark:text-slate-600'>
             January 30, 2023
           </span>
         </time>
