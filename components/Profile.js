@@ -15,13 +15,12 @@ function Profile() {
         />
 
         <h1 className='mt-6 text-4xl font-bold tracking-tight text-black sm:text-5xl dark:text-white'>
-          Software designer, founder, and amateur astronaut.
+          Intrigued being, Designer &amp; Frontend Engineer.
         </h1>
         <p className='mt-6 text-base text-gray-400 dark:text-slate-500'>
-          I&apos;m Spencer, a software designer and entrepreneur based in New
-          York City. I&apos;m the founder and CEO of Planetaria, where we
-          develop technologies that empower regular people to explore space on
-          their own terms.
+          I&apos;m Ashish, I design and code beautifully simple things, and I
+          love what I do. Here I write about my ideas and things I&apos;ve
+          learned, mostly about programming, design, philosophy, and life.
         </p>
 
         <div className='flex gap-6 mt-6'>
