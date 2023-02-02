@@ -5,7 +5,17 @@ import Profile from '@/components/Profile';
 import Blogs from '@/components/Blogs';
 import Footer from '@/components/Footer';
 
-export default function Home() {
+import { getBlogPostsData } from '@/lib/articles';
+
+export async function getStaticProps() {
+  const allPostsData = (await getBlogPostsData()).slice(0, 5);
+
+  return {
+    props: { allPostsData },
+  };
+}
+
+export default function Home({ allPostsData }) {
   return (
     <>
       <Head>
@@ -20,7 +30,7 @@ export default function Home() {
       <main className='transition duration-500 bg-white dark:bg-gray-900'>
         <Header />
         <Profile />
-        <Blogs />
+        <Blogs posts={allPostsData} />
         <Footer />
       </main>
     </>

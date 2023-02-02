@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/font": "13.1.5",
     "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
     "esbuild": "^0.17.5",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",

@@ -1,7 +1,9 @@
 import ArticleCard from './ArticleCard';
 import Container from './Container';
 
-function Blogs() {
+function Blogs({ posts }) {
+  console.log(posts);
+
   return (
     <section>
       <Container className='py-8'>
@@ -9,8 +11,9 @@ function Blogs() {
           Recently Published
         </h2>
         <div className='flex flex-col gap-16 mt-10'>
-          <ArticleCard />
-          <ArticleCard />
+          {posts.map((post) => (
+            <ArticleCard key={post.title} article={post} />
+          ))}
         </div>
       </Container>
     </section>
