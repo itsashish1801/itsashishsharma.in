@@ -10,56 +10,6 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      white: 'var(--color-white)',
-      black: 'var(--color-black)',
-      primary: 'var(--color-primary)',
-      'primary-dark': 'var(--color-primary-dark)',
-      secondary: 'var(--color-secondary)',
-      'secondary-dark': 'var(--color-secondary-dark)',
-
-      gray: {
-        100: 'var(--color-gray-100)',
-        200: 'var(--color-gray-200)',
-        300: 'var(--color-gray-300)',
-        350: 'var(--color-gray-350)',
-        400: 'var(--color-gray-400)',
-        500: 'var(--color-gray-500)',
-        600: 'var(--color-gray-600)',
-        700: 'var(--color-gray-700)',
-        800: 'var(--color-gray-800)',
-        900: 'var(--color-gray-900)',
-      },
-      slate: {
-        500: 'var(--color-slate-500)',
-        600: 'var(--color-slate-600)',
-      },
-      team: {
-        unknown: 'var(--color-team-unknown)',
-        current: 'var(--color-team-current)',
-        yellow: 'var(--color-team-yellow)',
-        blue: 'var(--color-team-blue)',
-        red: 'var(--color-team-red)',
-      },
-      yellow: {
-        500: 'var(--color-yellow-500)',
-        '500-inverted': 'var(--color-yellow-500-inverted)',
-      },
-      blue: {
-        100: 'var(--color-blue-100)',
-        500: 'var(--color-blue-500)',
-      },
-      red: {
-        500: 'var(--color-red-500)',
-      },
-      green: {
-        100: 'var(--color-green-100)',
-        500: 'var(--color-green-500)',
-        600: 'var(--color-green-600)',
-      },
-    },
     fontSize: {
       xs: ['0.8125rem', { lineHeight: '1.5rem' }],
       sm: ['0.875rem', { lineHeight: '1.5rem' }],
@@ -76,6 +26,56 @@ module.exports = {
       '9xl': ['8rem', { lineHeight: '1' }],
     },
     extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        white: 'var(--color-white)',
+        black: 'var(--color-black)',
+        primary: 'var(--color-primary)',
+        'primary-dark': 'var(--color-primary-dark)',
+        secondary: 'var(--color-secondary)',
+        'secondary-dark': 'var(--color-secondary-dark)',
+
+        gray: {
+          100: 'var(--color-gray-100)',
+          200: 'var(--color-gray-200)',
+          300: 'var(--color-gray-300)',
+          350: 'var(--color-gray-350)',
+          400: 'var(--color-gray-400)',
+          500: 'var(--color-gray-500)',
+          600: 'var(--color-gray-600)',
+          700: 'var(--color-gray-700)',
+          800: 'var(--color-gray-800)',
+          900: 'var(--color-gray-900)',
+        },
+        slate: {
+          500: 'var(--color-slate-500)',
+          600: 'var(--color-slate-600)',
+        },
+        team: {
+          unknown: 'var(--color-team-unknown)',
+          current: 'var(--color-team-current)',
+          yellow: 'var(--color-team-yellow)',
+          blue: 'var(--color-team-blue)',
+          red: 'var(--color-team-red)',
+        },
+        yellow: {
+          500: 'var(--color-yellow-500)',
+          '500-inverted': 'var(--color-yellow-500-inverted)',
+        },
+        blue: {
+          100: 'var(--color-blue-100)',
+          500: 'var(--color-blue-500)',
+        },
+        red: {
+          500: 'var(--color-red-500)',
+        },
+        green: {
+          100: 'var(--color-green-100)',
+          500: 'var(--color-green-500)',
+          600: 'var(--color-green-600)',
+        },
+      },
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
       },
