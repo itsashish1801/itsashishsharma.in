@@ -9,10 +9,7 @@ function ArticleCard({ article }) {
         <div className='absolute z-0 transition scale-95 bg-gray-100 opacity-0 dark:bg-gray-800 -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl group-hover:scale-100 group-hover:opacity-100' />
 
         <div className='relative'>
-          <time className='flex items-center gap-3.5' dateTime='2023-01-30'>
-            <div className='h-4 w-0.5 rounded-full bg-gray-350 opacity-60 dark:bg-slate-600' />
-            <Date dateString={article.date} />
-          </time>
+          <Date dateString={article.date} />
 
           <h2 className='mt-3 text-base font-semibold text-black dark:text-white'>
             {article.title}
