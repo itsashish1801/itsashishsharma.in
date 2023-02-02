@@ -1,11 +1,12 @@
 import { useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { getAllPostSlugs, getPostData } from '@/lib/articles';
+
 import Head from 'next/head';
 import Layout from '@/components/Layout';
 import Container from '@/components/Container';
-import Link from 'next/link';
 import Date from '@/components/Date';
+import Image from 'next/image';
 
 export async function getStaticPaths() {
   const paths = await getAllPostSlugs();
@@ -42,7 +43,7 @@ function BlogPost({ code, frontmatter }) {
           {/* <Link href={'/'}>Back to Overview</Link> */}
 
           <header>
-            <Date dateString={frontmatter.date} className='text-[1rem]' />
+            <Date dateString={frontmatter.date} className='text-[16px]' />
             <h1
               itemProp='headline'
               className='mt-6 text-4xl font-bold tracking-tight text-black dark:text-white sm:text-5xl'
@@ -55,6 +56,12 @@ function BlogPost({ code, frontmatter }) {
             itemProp='articleBody'
             className='mt-8 prose dark:prose-invert'
           >
+            <Image
+              src={frontmatter.banner}
+              alt='Image'
+              width={736}
+              height={420}
+            />
             <Component />
           </section>
         </Container>

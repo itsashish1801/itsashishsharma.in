@@ -13,15 +13,17 @@ function Profile() {
           className='object-cover w-16 h-16 bg-gray-100 rounded-full dark:bg-gray-800'
           alt='Photo of Ashish Sharma'
         />
-
-        <h1 className='mt-6 text-4xl font-bold tracking-tight text-black sm:text-5xl dark:text-white'>
-          Intrigued being, Designer &amp; Frontend Engineer.
-        </h1>
-        <p className='mt-6 text-base text-gray-400 dark:text-slate-500'>
-          I&apos;m Ashish, I design and code beautifully simple things, and I
-          love what I do. Here I write about my ideas and things I&apos;ve
-          learned, mostly about programming, design, philosophy, and life.
-        </p>
+        <div className='max-w-2xl'>
+          <h1 className='mt-6 text-4xl font-bold tracking-tight text-black sm:text-5xl dark:text-white'>
+            Intrigued being, Designer &amp; Frontend Engineer.
+          </h1>
+          <p className='mt-6 text-base text-gray-400 dark:text-slate-500'>
+            I&apos;m Ashish, I design and code beautifully simple things, and I
+            love what I do. Here I write about my ideas and a few things
+            I&apos;ve learned, mostly about programming, design, philosophy, and
+            life.
+          </p>
+        </div>
 
         <div className='flex gap-6 mt-6'>
           <a href='https://twitter.com/itsashish1801' className='group'>

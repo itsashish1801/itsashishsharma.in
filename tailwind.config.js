@@ -53,45 +53,45 @@ module.exports = {
       },
       DEFAULT: {
         css: {
-          '--tw-prose-body': theme('colors.zinc.600'),
-          '--tw-prose-headings': theme('colors.zinc.900'),
-          '--tw-prose-links': theme('colors.teal.500'),
-          '--tw-prose-links-hover': theme('colors.teal.600'),
-          '--tw-prose-underline': theme('colors.teal.500 / 0.2'),
-          '--tw-prose-underline-hover': theme('colors.teal.500'),
-          '--tw-prose-bold': theme('colors.zinc.900'),
-          '--tw-prose-counters': theme('colors.zinc.900'),
-          '--tw-prose-bullets': theme('colors.zinc.900'),
-          '--tw-prose-hr': theme('colors.zinc.100'),
-          '--tw-prose-quote-borders': theme('colors.zinc.200'),
-          '--tw-prose-captions': theme('colors.zinc.400'),
-          '--tw-prose-code': theme('colors.zinc.700'),
-          '--tw-prose-code-bg': theme('colors.zinc.300 / 0.2'),
-          '--tw-prose-pre-code': theme('colors.zinc.100'),
-          '--tw-prose-pre-bg': theme('colors.zinc.900'),
+          '--tw-prose-body': theme('colors.gray.500'),
+          '--tw-prose-headings': theme('colors.tertiary'),
+          '--tw-prose-links': theme('colors.primary'),
+          '--tw-prose-links-hover': theme('colors.primary'),
+          '--tw-prose-underline': theme('colors.primary'),
+          '--tw-prose-underline-hover': theme('colors.primary'),
+          '--tw-prose-bold': theme('colors.black'),
+          '--tw-prose-counters': theme('colors.gray.700'),
+          '--tw-prose-bullets': theme('colors.gray.700'),
+          '--tw-prose-hr': theme('colors.slate.100'),
+          '--tw-prose-quote-borders': theme('colors.slate.200'),
+          '--tw-prose-captions': theme('colors.gray.400'),
+          '--tw-prose-code': theme('colors.slate.700'),
+          '--tw-prose-code-bg': theme('colors.slate.200/0.5'),
+          '--tw-prose-pre-code': theme('colors.slate.100'),
+          '--tw-prose-pre-bg': theme('colors.slate.900'),
           '--tw-prose-pre-border': 'transparent',
-          '--tw-prose-th-borders': theme('colors.zinc.200'),
-          '--tw-prose-td-borders': theme('colors.zinc.100'),
+          '--tw-prose-th-borders': theme('colors.slate.200'),
+          '--tw-prose-td-borders': theme('colors.slate.100'),
 
-          '--tw-prose-invert-body': theme('colors.zinc.400'),
-          '--tw-prose-invert-headings': theme('colors.zinc.200'),
-          '--tw-prose-invert-links': theme('colors.teal.400'),
-          '--tw-prose-invert-links-hover': theme('colors.teal.400'),
-          '--tw-prose-invert-underline': theme('colors.teal.400 / 0.3'),
-          '--tw-prose-invert-underline-hover': theme('colors.teal.400'),
-          '--tw-prose-invert-bold': theme('colors.zinc.200'),
-          '--tw-prose-invert-counters': theme('colors.zinc.200'),
-          '--tw-prose-invert-bullets': theme('colors.zinc.200'),
-          '--tw-prose-invert-hr': theme('colors.zinc.700 / 0.4'),
-          '--tw-prose-invert-quote-borders': theme('colors.zinc.500'),
-          '--tw-prose-invert-captions': theme('colors.zinc.500'),
-          '--tw-prose-invert-code': theme('colors.zinc.300'),
-          '--tw-prose-invert-code-bg': theme('colors.zinc.200 / 0.05'),
-          '--tw-prose-invert-pre-code': theme('colors.zinc.100'),
-          '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 0.4)',
-          '--tw-prose-invert-pre-border': theme('colors.zinc.200 / 0.1'),
-          '--tw-prose-invert-th-borders': theme('colors.zinc.700'),
-          '--tw-prose-invert-td-borders': theme('colors.zinc.800'),
+          '--tw-prose-invert-body': theme('colors.slate.500'),
+          '--tw-prose-invert-headings': theme('colors.tertiary-dark'),
+          '--tw-prose-invert-links': theme('colors.primary-dark'),
+          '--tw-prose-invert-links-hover': theme('colors.primary-dark'),
+          '--tw-prose-invert-underline': theme('colors.primary-dark'),
+          '--tw-prose-invert-underline-hover': theme('colors.primary-dark'),
+          '--tw-prose-invert-bold': theme('colors.white'),
+          '--tw-prose-invert-counters': theme('colors.slate.200'),
+          '--tw-prose-invert-bullets': theme('colors.slate.200'),
+          '--tw-prose-invert-hr': theme('colors.slate.700 / 0.4'),
+          '--tw-prose-invert-quote-borders': theme('colors.slate.500'),
+          '--tw-prose-invert-captions': theme('colors.slate.500'),
+          '--tw-prose-invert-code': theme('colors.slate.300'),
+          '--tw-prose-invert-code-bg': theme('colors.slate.200 / 0.08'),
+          '--tw-prose-invert-pre-code': theme('colors.slate.100'),
+          '--tw-prose-invert-pre-bg': theme('colors.slate.900'),
+          '--tw-prose-invert-pre-border': theme('colors.slate.200 / 0.1'),
+          '--tw-prose-invert-th-borders': theme('colors.slate.700'),
+          '--tw-prose-invert-td-borders': theme('colors.slate.800'),
 
           // Base
           color: 'var(--tw-prose-body)',
@@ -108,7 +108,7 @@ module.exports = {
           // Headings
           'h2, h3': {
             color: 'var(--tw-prose-headings)',
-            fontWeight: theme('fontWeight.semibold'),
+            fontWeight: theme('fontWeight.bold'),
           },
           h2: {
             fontSize: theme('fontSize.xl')[0],
@@ -128,27 +128,25 @@ module.exports = {
 
           // Images
           img: {
-            borderRadius: theme('borderRadius.3xl'),
+            borderRadius: theme('borderRadius.lg'),
           },
 
           // Inline elements
           a: {
             color: 'var(--tw-prose-links)',
             fontWeight: theme('fontWeight.semibold'),
-            textDecoration: 'underline',
-            textDecorationColor: 'var(--tw-prose-underline)',
-            transitionProperty: 'color, text-decoration-color',
-            transitionDuration: theme('transitionDuration.150'),
-            transitionTimingFunction: theme('transitionTimingFunction.in-out'),
           },
+
           'a:hover': {
-            color: 'var(--tw-prose-links-hover)',
+            textDecoration: 'underline',
             textDecorationColor: 'var(--tw-prose-underline-hover)',
           },
+
           strong: {
             color: 'var(--tw-prose-bold)',
             fontWeight: theme('fontWeight.semibold'),
           },
+
           code: {
             display: 'inline-block',
             color: 'var(--tw-prose-code)',
@@ -225,12 +223,13 @@ module.exports = {
             fontSize: theme('fontSize.sm')[0],
             fontWeight: theme('fontWeight.medium'),
             backgroundColor: 'var(--tw-prose-pre-bg)',
-            borderRadius: theme('borderRadius.3xl'),
+            borderRadius: theme('borderRadius.lg'),
             padding: theme('spacing.8'),
             overflowX: 'auto',
             border: '1px solid',
             borderColor: 'var(--tw-prose-pre-border)',
           },
+
           'pre code': {
             display: 'inline',
             color: 'inherit',
@@ -317,6 +316,8 @@ module.exports = {
         'primary-dark': 'var(--color-primary-dark)',
         secondary: 'var(--color-secondary)',
         'secondary-dark': 'var(--color-secondary-dark)',
+        tertiary: 'var(--color-tertiary)',
+        'tertiary-dark': 'var(--color-tertiary-dark)',
 
         gray: {
           100: 'var(--color-gray-100)',

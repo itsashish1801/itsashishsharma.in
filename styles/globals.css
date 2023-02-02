@@ -1,8 +1,10 @@
 :root {
   --color-primary: #4433ff;
   --color-secondary: #e60067;
+  --color-tertiary: #2c0b8e;
   --color-primary-dark: #617bff;
   --color-secondary-dark: #ff54a1;
+  --color-tertiary-dark: #ffe100;
 
   --color-black: #000;
   --color-white: #fff;
@@ -35,4 +37,5 @@
 
 @tailwind base;
 @tailwind components;
+@import './prism.css';
 @tailwind utilities;

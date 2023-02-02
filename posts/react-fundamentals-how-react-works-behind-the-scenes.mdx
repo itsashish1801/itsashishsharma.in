@@ -1,6 +1,7 @@
 ---
-title: 'React Fundamentals - How React works BTS'
+title: 'React Fundamentals - How it works BTS'
 date: '2023-02-01'
+banner: 'https://res.cloudinary.com/dpoftt83y/image/upload/v1675358774/cld-sample-4.jpg'
 description: "One of the biggest reason for React popularity is how intuitive it's syntax is to write and understand. But, how it works behind the scenes is even more interesting and helps us to write better code."
 ---
 
@@ -125,21 +126,3 @@ The index page is where I list all of the blog posts, and later as my posts grow
 By adding brackets `[ ]` to a route, we create a dynamic route. So now if I visit the URL `https://jpreagan.com/blog/`, it will take me to the index as expected. But if I visit `https://jpreagan.com/blog/not-a-page`, then I'll get a 404. This outcome should also be expected because that URL doesn't exist.
 
 What we need here is `getStaticPaths`: that will allow us to define a list of paths to be statically generated. That list will come from our `/posts` directory: one for each of the filenames minus the `*.mdx` extension.
-
-Let's give those two new files some basic structure:
-
-```tsx
-// ./pages/blog/index.tsx
-import React from "react";
-import { GetStaticProps } from "next";
-export default function BlogPage(props) {
-  return (/* render list of blog posts */);
-}
-export const getStaticProps: GetStaticProps = async () => {
-  /* fetch list of blog posts  */
-}
-```
-
-```tsx
-
-```
