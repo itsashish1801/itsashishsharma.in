@@ -6,7 +6,7 @@ function BlogPost({ code, frontmatter }) {
   const Component = useMemo(() => getMDXComponent(code), [code]);
 
   return (
-    <article itemScope itemType='http://schema.org/Article'>
+    <article className='' itemScope itemType='http://schema.org/Article'>
       <header>
         <h1 itemProp='headline'>{frontmatter.title}</h1>
         <p>{frontmatter.date}</p>

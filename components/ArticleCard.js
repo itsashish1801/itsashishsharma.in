@@ -5,7 +5,7 @@ import Date from './Date';
 function ArticleCard({ article }) {
   return (
     <article className='max-w-xl group'>
-      <Link href={article.slug} className='relative'>
+      <Link href={`blog/${article.slug}`} className='relative'>
         <div className='absolute z-0 transition scale-95 bg-gray-100 opacity-0 dark:bg-gray-800 -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl group-hover:scale-100 group-hover:opacity-100' />
 
         <div className='relative'>

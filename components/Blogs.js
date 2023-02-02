@@ -2,8 +2,6 @@ import ArticleCard from './ArticleCard';
 import Container from './Container';
 
 function Blogs({ posts }) {
-  console.log(posts);
-
   return (
     <section>
       <Container className='py-8'>
