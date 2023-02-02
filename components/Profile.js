@@ -24,16 +24,16 @@ function Profile() {
         </p>
 
         <div className='flex gap-6 mt-6'>
-          <a href='#' className='group'>
+          <a href='https://twitter.com/itsashish1801' className='group'>
             <TwitterIcon />
           </a>
-          <a href='#' className='group'>
+          <a href='https://www.instagram.com/itsashish1801' className='group'>
             <InstagramIcon />
           </a>
-          <a href='#' className='group'>
+          <a href='https://github.com/itsashish1801' className='group'>
             <GithubIcon />
           </a>
-          <a href='#' className='group'>
+          <a href='https://www.linkedin.com/in/itsashish1801' className='group'>
             <LinkedinIcon />
           </a>
         </div>
