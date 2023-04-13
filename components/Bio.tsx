@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import profileImg from '../public/ashish-sharma.webp';
-import { GithubIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from './Icons';
+import SocialLinks from './SocialLinks';
 
 function Bio() {
   return (
@@ -25,20 +25,7 @@ function Bio() {
         </p>
       </div>
 
-      <div className='flex gap-6 mt-6'>
-        <a href='https://twitter.com/itsashish1801' className='group'>
-          <TwitterIcon />
-        </a>
-        <a href='https://www.instagram.com/itsashish1801' className='group'>
-          <InstagramIcon />
-        </a>
-        <a href='https://github.com/itsashish1801' className='group'>
-          <GithubIcon />
-        </a>
-        <a href='https://www.linkedin.com/in/itsashish1801' className='group'>
-          <LinkedinIcon />
-        </a>
-      </div>
+      <SocialLinks />
     </header>
   );
 }

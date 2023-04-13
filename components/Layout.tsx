@@ -10,7 +10,7 @@ interface LayoutProps {
 
 function Layout({ children, className }: LayoutProps) {
   return (
-    <div className={`container max-w-3xl mx-auto ${className}`}>
+    <div className={`container max-w-3xl mx-auto px-5 lg:px-0 ${className}`}>
       <Navbar />
       <main>{children}</main>
       <Footer />
