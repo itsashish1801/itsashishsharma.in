@@ -4,3 +4,11 @@ export interface BlogCardProps {
   date: string;
   slug: string;
 }
+
+export interface Frontmatter {
+  title: string;
+  date: string;
+  description: string;
+  banner: string;
+  bannerAlt: string;
+}

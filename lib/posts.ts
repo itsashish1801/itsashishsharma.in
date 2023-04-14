@@ -3,14 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';
 import remarkGfm from 'remark-gfm';
-
-type Frontmatter = {
-  title: string;
-  date: string;
-  description: string;
-  banner: string;
-  bannerAlt: string;
-};
+import { Frontmatter } from '@/interfaces/blog';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
