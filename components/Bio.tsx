@@ -15,10 +15,10 @@ function Bio() {
       />
 
       <div className='max-w-2xl'>
-        <h2 className='mt-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl'>
+        <h1 className='mt-6 text-4xl font-medium leading-tight tracking-tight md:text-5xl'>
           Intrigued being, Designer &amp; Frontend Engineer.
-        </h2>
-        <p className='mt-6 text-base leading-relaxed text-gray-500 dark:text-slate-500'>
+        </h1>
+        <p className='mt-6 leading-relaxed text-gray-500 md:text-lg dark:text-slate-500 md:leading-relaxed'>
           I&apos;m Ashish, I design and code beautifully simple things, and I
           love what I do. Here I write about my ideas and a few things I&apos;ve
           learned, mostly about programming, design, philosophy, and life.

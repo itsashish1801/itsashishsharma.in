@@ -6,124 +6,222 @@ bannerAlt: 'Some random banner'
 description: "One of the biggest reason for React popularity is how intuitive it's syntax is to write and understand. But, how it works behind the scenes is even more interesting and helps us to write better code."
 ---
 
-In this post, I'll show you how I made my blog with Next.js and MDX.
+[kentcdodds.com](https://kentcdodds.com) is completely custom built by me (and
+[team](/credits)) using [Remix](https://remix.run). After writing tens of
+thousands of lines of code using this framework, I have developed a great
+appreciation for what this framework can do for me and the users of my site. I
+want to tell you about some of it.
 
-You'll learn how to easily write long-form content with markdown and then give it superpowers with MDX.
+## In a sentence
 
-You'll also learn about [static site generation](https://nextjs.org/docs/basic-features/data-fetching/get-static-props) in Next.js and using [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes).
+Here's the core reason I love using Remix to build websites:
 
-First, let's go over what is markdown. Where might you use it? Then we'll bump it up a notch with MDX.
+That's it. So what does that mean? Let's dig deeper...
 
-## What's good about markdown?
+## The User Experience
 
-Markdown is a simple and lightweight markup language that adds formatting and other features to a plain text document. Being in plain text, this makes it convenient to add to version control software such as in a git repository.
+There are a lot of things that impact the user's experience when they use our
+software. Most of the time I think people are focused on performance/speed and
+while that's one important aspect, it is only one part of things. The user
+experience includes a whole host of other aspects of your website though. Here
+are a few:
 
-In this way, we can avoid the need for having a content management system (CMS). It's portable and future-proof! No need to mess with any databases or third party software.
+- Accessibility
+- Performance
+- Content reflows
+- Reliability and availability
+- Error handling
+- Pending management
+- State management
+- Progressive enhancement
+- Resilience (behavior in poor network conditions)
+- Layout
+- Content clarity
 
-But why can't I just write my content in HTML or JSX? Well, you can. Nothing is stopping you. But if you were writing a blog post or some long-form content does this seem convenient?
+Even the speed of development of features can impact the user's experience. So
+the user's experience is
+[indirectly impacted](/blog/why-users-care-about-how-you-write-code) by the
+maintainability of our code.
 
-```jsx
-export default function MyPost() {
+Remix helps with many of these things. Some without me having to think about it.
+In particular, some of the harder problems involving state management (race
+conditions of mutations and data loading) are completely managed within the
+framework. Because of this, users won't find themselves having to refresh the
+page because they're looking at stale data. This just happens without me
+thinking about it. It's just the way Remix works.
+
+Remix does a lot to keep my website fast through its use of `<link />` tags to
+preload assets and data at the right time. Sometimes I'm blown away by the fact
+that my site _feels_ like it's static files on a CDN, but it's _actually_ server
+rendered/hydrated and every page is completely unique to every user (so a shared
+HTTP cache on a CDN is not possible).
+
+Remix's use of the platform APIs is what enables this. That's also what makes
+Remix so resilient and great for progressive enhancement as well. In poor
+network conditions where loading the JavaScript is slow/fails, Remix's standard
+API for mutations (`<Form />`) will actually work even before the app is
+hydrated. This means that the user can start getting work done with the app,
+even if they're on a poor connection. Much better than a completely unresponsive
+button whose `onClick` handler hasn't yet loaded (which was my own standard
+before Remix)!
+
+Remix's declarative error handling means that it's easier for me to properly
+handle errors in the context of where the error happens. Combine this with
+nested routing and what you get is the ability to render a contextual error
+without breaking the rest of the app.
+
+And also this works on the server as well (which is unique to Remix), so users
+will get the same experience whether the error happened during a client
+transition or a full document download.
+
+## The Code
+
+Apps I've helped build are used by millions of people all over the world.
+Building websites with Remix is the first time I can say that I'm truly happy
+with the code I deployed. The biggest reason for this is that before Remix I
+spent a lot of time just trying to deal with user experience issues. Because
+Remix helps so much with the user experience, I don't have so much complex code
+to manage myself. So all that's left for me to do is use the declarative APIs
+that Remix (and React) give me, to build my app and the user experience is good
+by default.
+
+Honestly that's the biggest thing I have to say about the code portion. You know
+how demo code is always so simple because it often skips the nuance of pending
+states, race conditions, error handling, accessibility, etc? Well, my code isn't
+quite like demo code, but Remix makes it feel pretty similar. I'm definitely
+still thinking about accessibility (though Remix's
+[@reach-ui](https://reach.tech) packages help a lot with that) and error/pending
+states. But the APIs that Remix gives me for those things are simple and
+declarative. I mean, here it is:
+
+```tsx filename=app/events/$eventId/attendees.tsx
+const loader: LoaderFunction = async ({ request, params }) => {
+  // this runs on the server
+  // unexpected runtime errors will trigger the ErrorBoundary to be rendered
+  // expected errors (like 401s, 404s, etc) will render the CatchBoundary
+  // otherwise I can return a response and that'll render the default component
+  return json(data);
+};
+
+export default function AttendeesRoute() {
+  const data = useLoaderData();
+  return <div>{/* render the data */}</div>;
+}
+
+export function ErrorBoundary({ error }) {
+  return <div>{/* render an "unexpected error" message */}</div>;
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+  return <div>{/* render the error for 400-status level responses */}</div>;
+}
+```
+
+Oh, and for pending states (whether mutations or regular transitions) you can
+stick this wherever you want the pending UI to show up (whether global or
+local):
+
+```tsx
+const transition = useTransition();
+
+const text =
+  transition.state === 'submitting'
+    ? 'Saving...'
+    : transition.state === 'loading'
+    ? 'Saved!'
+    : 'Ready';
+```
+
+This drastically simplifies the React code that I write to the point that I
+don't write _any_ HTTP-related React code. That client-server communication is
+completely managed by Remix and it's managed in a way that optimizes for the
+user's experience. Oh, and the client/server boundary can all be fully typed as
+well so I spend less time going back and forth between my browser and editor
+fixing silly mistakes.
+
+I also love that Remix is founded on web APIs. That `json` function we're
+calling above in our loader? That's just a simple function to create a regular
+[`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) object.
+That's right. If you want to learn how to do something with Remix, you'll spend
+just as much (maybe more) time on [mdn](https://developer.mozilla.org) as you do
+on [the remix docs](https://docs.remix.run) and this brings me to another thing
+I love about Remix:
+
+This happens naturally thanks to the fact that Remix uses so much of the web
+platform and defers to the web platform APIs as much as possible. (This is
+similar to how I feel that the better I get with React, the better I get at
+JavaScript.)
+
+And because Remix is founded on the web APIs as the common interface for the
+server, you can deploy the same app to any platform (provided the code you bring
+along will run on those platforms) and all you have to do is change which
+adapter you're using. Whether you want to run on serverless or in a docker
+container, Remix has got you covered.
+
+Another awesome part of the `loader` thing is that because it runs on the server
+I can hit APIs that give me far too much data and slim it down to just the part
+of the data I need. That means I can naturally eliminate the data overfetching
+problem that leads so many of us to reach for the complexity of `graphql`. I
+mean, you can still totally use `graphql` with Remix, but because Remix manages
+the client/server communication for you, you don't have to ship a huge and
+complex `graphql` client library to the browser and instead just rely on Remix
+to do the right thing at the right time (which it does).
+
+And if I ever need more data than the server is sending to the client, I just
+scroll up in the file, change the loader to include the extra data I need, and
+I've got it right there. All typed and ready to go for my client-side code. It's
+fabulous.
+
+I mentioned the `<Form />` component earlier and how it will still work even
+before JavaScript loads. For that reason, it's great for the user experience.
+And it's also great for the developer experience, because I don't have to manage
+a bunch of `fetch` and state nonsense for my mutations. Normally, I have an
+`onSubmit` that adds an `event.preventDefault()`, `fetch`, race condition
+management, and cache invalidation code. Well, with Remix, all that goes away
+and I'm left with a declarative mutations API:
+
+```tsx filename=app/events/$eventId/attendees.tsx
+const action: ActionFunction = async ({ request }) => {
+  // this runs on the server and I can handle the request form data here
+  // whether that be a direct database interaction or calling a downstream
+  // service to perform the actual mutation. It's just brilliant.
+  return redirect(/* send the user wherever you like after this */);
+};
+
+export default function AttendeesRoute() {
+  // look mah! No event handler or useEffect necessary!
+  // race conditions handled.
   return (
-    <>
-      <h1>Is this inconvenient?</h1>
-      <h2>Has to be a better way</h2>
-      <p>Shucks, now I have to wrap each paragraph in its own tags.</p>
-      <p>
-        And I'll also have to add <strong>importance like this</strong>.
-      </p>
-      <p>
-        And don't get me started with <a href='example.com/'>links</a>
-      </p>
-    </>
+    <Form method='post'>
+      <div>
+        <label htmlFor='name-input'>Name: </label>
+        <input id='name-input' name='name' />
+      </div>
+      <div>
+        <label htmlFor='email-input'>Email: </label>
+        <input id='email-input' name='email' type='email' />
+      </div>
+      <button type='submit'>Add Attendee</button>
+    </Form>
   );
 }
 ```
 
-Let's look at how that might look in markdown instead:
+Oh, and you want validation right? Well, you're gonna want to do that on the
+server, so you can put it in the `action` there. But you may also want it on the
+client right? Well, you literally just move the validation logic from the
+`action` into a function and call it in both the `action` as well as your
+component. That's it. Wowza.
 
-```
-# A simple header
-## Isn't this nicer?
-No more tags needed for paragraphs!
-List em out:
-- Strawberries
-- Bananas
-- Papaya
-And I can say something **important like this**.
-This is how we do [links](https://example.com).
-```
+## Conclusion
 
-Check out the [Markdown Guide](https://www.markdownguide.org/) for more reference on the syntax of markdown. I won't cover them here, but just mention we can do all sorts of formatting, headings, lists, tables, and things like code blocks in markdown. And if you're looking to get some practice with markdown also try the [Markdown Tutorial](https://www.markdowntutorial.com/).
+I could go on and on. There are so many blog posts and workshops inside of me. I
+didn't even get to talk about how simple Optimistic UI is to implement with
+Remix, secure authentication, abstractability (code reuse), pagination, no
+`<Layout />` components necessary thanks to nested routing, and so much more.
+I'll get to all that eventually I promise.
 
-### 🦸 MDX: markdown with superpowers
+At the end of the day, it comes back to this:
 
-That's a lot more comfortable than writing in JSX or HTML, but it's still a bit limiting though isn't it? What if I wanted to add a component to my markdown?
-
-```
-import { Chart } from "../components/chart";
-# Is this possible?
-It'd be nice to be able to render JSX components in my markdown!
-<Chart description={description} />
-```
-
-Ah, but we can! We need markdown with superpowers. We need MDX! With MDX, you get the simplicity of markdown, but with the awesome flexibility to include JSX where we need it too.
-
-## How to use MDX with Next.js
-
-Sounds great, yea? Let's talk about how to put this into practice. I'll share with you how I made my blog with MDX and Next.js.
-
-First of all, we have four options when it comes to using MDX in a Next.js project:
-
-- [@next/mdx](https://nextjs.org/docs/advanced-features/using-mdx)
-- [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
-- ~~next-mdx-enhanced~~
-- [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
-
-The first is the officially supported option. If you want to go that route, there is a [good blog post about how to do that](https://nextjs.org/blog/markdown). `next-mdx-remote` and `next-mdx-enhanced` are offered by HashiCorp, but only `next-mdx-remote` is still maintained. It will give you more control and options should you go that way.
-
-I chose `mdx-bundler`, a project maintained by Kent C. Dodds. With `mdx-bundler` you get a MDX compiler and bundler, which distinguishes it from the other options. You can bundle at build time or run time. This capability makes it a suitable option for server-side rendering in addition to static site generation.
-
-With `mdx-bundler`, your MDX source can come from the local filesystem, some other repository, or a remote content management system. It is also not tied to any one specific framework. In other words, it will work just fine with Next.js, Gatsby, Remix, Create React App, or any other React framework.
-
-In my case, I'm bundling at build time from the local filesystem. I'm using Next.js's static site generation via `getStaticProps` and dynamic routes with `getStaticPaths`.
-
-Actually, I've two good options here: static site generation or server-side rendering since `mdx-bundler` will work with either. If I had a lot of posts (perhaps one day), or my posts were being updated frequently, I'd consider using server-side rendering.
-
-Even though projects like Next.js and Remix have made server-side rendering a high-performance option again, it's still hard to beat the reliability and speed that you get from static site generation. The tradeoff for static site generation is longer build times. The data will also be stale until next build, but for blog posts thats usually not a problem.
-
-### 🏗️ Building the foundation
-
-My directory structure looks a bit like this:
-
-```
-jpreagan.com/
-├── components # React components
-├── lib        # Helper functions
-├── pages      # Page routes
-├── posts      # MDX content
-├── public     # Static assets
-├── styles     # CSS
-```
-
-Let's say I've all my posts in `*.mdx` files in the `/posts` directory. An individual post will look something like this:
-
-```markdown
----
-title: 'Starting a personal dashboard with the Spotify API'
-date: '2022-09-08'
-description: 'Use the Spotify API to start your own personal dashboard.'
----
-
-My MDX content follows here...
-```
-
-Everything inside the `---` is referred to as the frontmatter. In a moment, I'll explain how to make use of this information in your code.
-
-For now, let's make a new directory in the `/pages` directory: `/pages/blog`. And in that directory let's create a `/pages/blog/index.tsx` and a `/pages/blog/[slug].tsx`.
-
-The index page is where I list all of the blog posts, and later as my posts grow, I'll have to paginate it too. The oddly named `/pages/blog/[slug].tsx` is like a template for an individual post.
-
-By adding brackets `[ ]` to a route, we create a dynamic route. So now if I visit the URL `https://jpreagan.com/blog/`, it will take me to the index as expected. But if I visit `https://jpreagan.com/blog/not-a-page`, then I'll get a 404. This outcome should also be expected because that URL doesn't exist.
-
-What we need here is `getStaticPaths`: that will allow us to define a list of paths to be statically generated. That list will come from our `/posts` directory: one for each of the filenames minus the `*.mdx` extension.
+And that's just something I can get behind and push on. Care to join me?

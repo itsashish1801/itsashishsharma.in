@@ -45,7 +45,7 @@ function Blog({ frontmatter, code }: BlogProps) {
         <span>
           <ArrowLeft />
         </span>
-        <span className='text-lg font-semibold'>Back to overview</span>
+        <span className='text-lg font-medium'>Back to overview</span>
       </Link>
 
       <header>
@@ -56,7 +56,7 @@ function Blog({ frontmatter, code }: BlogProps) {
           >
             {frontmatter.title}
           </h1>
-          <p className='mt-2 text-lg font-semibold text-gray-400 dark:text-slate-500'>
+          <p className='mt-2 text-lg font-medium text-gray-400 dark:text-slate-500'>
             <span>
               <time>{format(parseISO(frontmatter.date), 'LLLL d, yyyy')}</time>
             </span>{' '}
@@ -75,7 +75,10 @@ function Blog({ frontmatter, code }: BlogProps) {
         </div>
       </header>
 
-      <main className='prose dark:prose-invert lg:mt-24' itemProp='articleBody'>
+      <main
+        className='mt-24 prose prose-light dark:prose-dark'
+        itemProp='articleBody'
+      >
         <Component />
       </main>
     </article>
