@@ -60,7 +60,7 @@ function Blog({ frontmatter, code }: BlogProps) {
           </p>
         </div>
 
-        <div className='mt-10 lg:mt-16 aspect-h-4 aspect-w-3 md:aspect-w-3 md:aspect-h-2'>
+        <div className='mt-10 aspect-h-4 aspect-w-3 md:aspect-w-3 md:aspect-h-2'>
           <Image
             priority
             src={frontmatter.banner}
@@ -71,7 +71,7 @@ function Blog({ frontmatter, code }: BlogProps) {
         </div>
       </header>
 
-      <main className='mt-12 lg:mt-24' itemProp='articleBody'>
+      <main className='prose dark:prose-invert lg:mt-24' itemProp='articleBody'>
         <Component />
       </main>
     </article>
