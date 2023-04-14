@@ -9,6 +9,7 @@ import { Frontmatter } from '@/interfaces/blog';
 
 import { ArrowLeft } from '@/components/Icons';
 import Image from 'next/image';
+import { format, parseISO } from 'date-fns';
 
 interface BlogProps {
   code: string;
@@ -56,7 +57,10 @@ function Blog({ frontmatter, code }: BlogProps) {
             {frontmatter.title}
           </h1>
           <p className='mt-2 text-lg font-semibold text-gray-400 dark:text-slate-500'>
-            11 min read
+            <span>
+              <time>{format(parseISO(frontmatter.date), 'LLLL d, yyyy')}</time>
+            </span>{' '}
+            &mdash; <span>11 min read</span>
           </p>
         </div>
 
