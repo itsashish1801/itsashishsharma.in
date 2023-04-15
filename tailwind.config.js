@@ -114,6 +114,9 @@ module.exports = {
                     ...breakout,
                   },
                 },
+                code: {
+                  fontWeight: theme('fontWeight.bold'),
+                },
                 ul: {
                   marginTop: 0,
                   marginBottom: theme('spacing.8'),
