@@ -55,6 +55,11 @@ module.exports = {
         '6xl': '3.75rem', // 60px
         '7xl': '4.375rem', // 70px
       },
+      spacing: {
+        '5vw': '5vw', // pull featured sections and navbar in the margin
+        '8vw': '8vw', // positions hero img inside the margin
+        '10vw': '10vw', // page margin
+      },
 
       typography: (theme) => {
         // some fontSizes return [size, props], others just size :/
@@ -104,8 +109,8 @@ module.exports = {
                   backgroundColor: 'var(--base00)',
                   marginTop: 0,
                   marginBottom: theme('spacing.8'),
-                  marginLeft: `-${theme('spacing.10vw')}`,
-                  marginRight: `-${theme('spacing.10vw')}`,
+                  marginLeft: `-${theme('spacing.5vw')}`,
+                  marginRight: `-${theme('spacing.5vw')}`,
                   padding: theme('spacing.8'),
                   borderRadius: 0,
 

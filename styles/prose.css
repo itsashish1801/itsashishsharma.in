@@ -94,6 +94,8 @@ pre {
 .prose pre > code {
   display: inline-block;
   min-width: 100%;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
 }
 
 .codeblock-line {
