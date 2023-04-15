@@ -4,6 +4,8 @@ import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';
 import remarkGfm from 'remark-gfm';
 import { Frontmatter } from '@/interfaces/blog';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings/lib';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -45,6 +47,11 @@ export async function getPostData(slug: string) {
     source: mdxSource,
     mdxOptions(options) {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      ];
 
       return options;
     },
