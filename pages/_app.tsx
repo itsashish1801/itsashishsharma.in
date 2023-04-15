@@ -25,7 +25,7 @@ const matter = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute='class'>
+    <ThemeProvider attribute='class' defaultTheme='dark'>
       <Layout className={`${matter.variable} font-sans`}>
         <Component {...pageProps} />
       </Layout>

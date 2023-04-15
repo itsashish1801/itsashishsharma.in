@@ -64,19 +64,23 @@ function Blog({ frontmatter, code }: BlogProps) {
           </p>
         </div>
 
-        <div className='mt-10 aspect-h-4 aspect-w-3 md:aspect-w-3 md:aspect-h-2'>
+        <div className='my-12 aspect-h-4 aspect-w-3 md:aspect-w-3 md:aspect-h-2 lg:my-28'>
           <Image
-            priority
             src={frontmatter.banner}
             fill
+            sizes='(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw'
+            placeholder='blur'
+            blurDataURL={frontmatter.banner}
             alt={frontmatter.bannerAlt}
-            className='object-cover object-center transition-opacity rounded-lg'
+            className='object-cover object-center transition-opacity rounded-lg lg:scale-[1.2]'
           />
         </div>
       </header>
 
       <main
-        className='mt-24 prose prose-light dark:prose-dark'
+        className='prose prose-light dark:prose-dark'
         itemProp='articleBody'
       >
         <Component />
