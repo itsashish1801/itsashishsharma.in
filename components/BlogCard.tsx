@@ -9,7 +9,7 @@ function BlogCard({ slug, title, description, date }: BlogCardProps) {
   return (
     <article className='max-w-xl group'>
       <Link href={`blog/${slug}`} className='relative block'>
-        <div className='absolute z-0 block transition scale-95 bg-gray-100 opacity-0 dark:bg-gray-800 -inset-y-6 -inset-x-full lg:-inset-x-6 lg:rounded-lg group-hover:scale-100 group-hover:opacity-100' />
+        <div className='absolute z-0 block transition scale-95 bg-gray-100 opacity-0 dark:bg-gray-800 -inset-y-6 -inset-x-6 md:rounded-lg group-hover:scale-100 group-hover:opacity-100' />
 
         <div className='relative'>
           <Date dateString={date} />
