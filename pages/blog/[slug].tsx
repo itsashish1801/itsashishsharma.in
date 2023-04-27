@@ -1,15 +1,17 @@
-import Link from 'next/link';
 import { useMemo } from 'react';
-import { getMDXComponent } from 'mdx-bundler/client';
+import Link from 'next/link';
+import Image from 'next/image';
 import { GetStaticPaths, GetStaticProps } from 'next';
+
+import { getMDXComponent } from 'mdx-bundler/client';
+import { format, parseISO } from 'date-fns';
+import readingTime from 'reading-time';
 
 import { getAllPostSlugs, getPostData } from '@/lib/posts';
 
 import { Frontmatter } from '@/interfaces/blog';
 
 import { ArrowLeft } from '@/components/Icons';
-import Image from 'next/image';
-import { format, parseISO } from 'date-fns';
 
 interface BlogProps {
   code: string;
@@ -60,7 +62,7 @@ function Blog({ frontmatter, code }: BlogProps) {
             <span>
               <time>{format(parseISO(frontmatter.date), 'LLLL d, yyyy')}</time>
             </span>{' '}
-            &mdash; <span>11 min read</span>
+            &mdash; <span>{readingTime(code).text}</span>
           </p>
         </div>
 

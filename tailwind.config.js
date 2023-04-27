@@ -119,6 +119,29 @@ module.exports = {
                     ...breakout,
                   },
                 },
+                '.embed': {
+                  position: 'relative',
+                  marginLeft: '-10vw',
+                  marginRight: '-10vw',
+                  [`@media (min-width: ${theme('screens.lg')})`]: {
+                    ...breakout,
+                  },
+                },
+                '.embed > div': {
+                  height: '0px',
+                },
+                '.embed > div > iframe': {
+                  height: '100% !important',
+                  width: '100% !important',
+                  top: '0',
+                  left: '0',
+                  position: 'absolute',
+                  border: 'none',
+                  borderRadius: '0 !important',
+                  [`@media (min-width: ${theme('screens.lg')})`]: {
+                    borderRadius: '0.5rem !important',
+                  },
+                },
                 code: {
                   fontWeight: theme('fontWeight.bold'),
                 },
@@ -165,6 +188,7 @@ module.exports = {
                   // images are wrapped in <p>, which already has margin
                   marginTop: 0,
                   marginBottom: 0,
+                  width: theme('width.full'),
                   borderRadius: theme('borderRadius.lg'),
                 },
                 blockquote: {
